@@ -1,7 +1,6 @@
 export default{
-  "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
+  "index": "Welcome",
+  // Pages
   "about": {
     "title": "About",
     "type": "page"
@@ -10,4 +9,12 @@ export default{
     "title": "Archive",
     "type": "page"
   },
+  // Sidebar
+  '---': {
+    type: 'separator'
+  },
+  "fx-mps": "FX Modeling with Matrix Product States",
+  "commodity-featimp": "Exploring Drivers for Commodity Future Prices",
+  "swap-featimp": "Swap Curve Dynamics Feature Importance",
+  "financial-ml": "Financial Machine Learning",
 }
