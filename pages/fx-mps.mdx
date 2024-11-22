@@ -4,15 +4,13 @@ In the following project I am applying the Matrix Product State (MPS) training m
 
 ## Matrix Product States
 
-Preparing content for:
+Work in progress ... preparing content for:
 
-- [ ] Tensor formulation
-- [ ] MPS Visualization
+- [ ] MPS introduction
 - [ ] Sampling from MPS
-- [ ] How to bring into Canonical form
+- [ ] Canonical form
 - [ ] NLL Loss and Gradient
 
-... work in progress
 
 ## Data Preprocessing
 
@@ -36,17 +34,21 @@ Following histograms represent the marginal distributions of the target distribu
 
 ![Log Return Histograms](/log_ret_hists.png)
 
-Since the Matrix Product State model only takes binary values we need to binarize our features. For that purpose the algorithm from [[2]](#references) is used.
+Since the Matrix Product State model only takes binary values we need to binarize our features.
+For that purpose the algorithm from [[2]](#references) is used.
 
 To transfrom from real to binary we use
 
-$x_{int} = \lfloor (2^N - 1) \frac{x-x_{min}}{x_{max}-x{min}} \rfloor \leftrightarrow x_{bin}$
+$x_{int} = \lfloor (2^N - 1) \frac{x-x_{min}}{x_{max}-x_{min}} \rfloor \leftrightarrow x_{bin}$
 
 To transform from binary to real we use
 
-$x_{real}=x_{min} + (x_{int} \frac{x_{max}-x{min}}{2^N - 1})$
+$x_{real}=x_{min} + (x_{int} \frac{x_{max}-x_{min}}{2^N - 1})$
 
-The binarized features represent the actual distribution that we are going to model. Ideally we could use a sufficient amount of bits per feature such that the target distributions could be rather closely recovered. In this experiment we limit ourselves to using f bits per feature to let the mps training finish in reasonable time, altough it is possible to scale up using more compute resources. 
+The binarized features represent the actual distribution that we are going to model.
+Ideally we could use a sufficient amount of bits per feature such that the target distributions could be rather closely recovered.
+In this experiment we limit ourselves to using f bits per feature to let the mps training finish in reasonable time,
+although it is possible to scale up using more compute resources. 
 
 ![Binary Histograms](/binary_hists.png)
 
@@ -54,14 +56,16 @@ The binarized features represent the actual distribution that we are going to mo
 
 During training the bond dimensions are adjusted from all 2 to [ 2  4  8 15 21 33 46 71 74 43 23 12  8  4  2  1].
 
-The NLL Loss decreases sharply in the first five iterations and only changes minimal in all subsequent iterations.
+The NLL Loss decreases notably within the first five iterations and changes minimal in all subsequent iterations. 
 
 ![Loss](/loss.png)
 
 
 ## Results
 
-For assessing how close the target distribution was actually modeled, we generate 1000 samples from the trained MPS with adjusted bond dimensions and compare them visually to the target marginal distributions.
+For assessing how close the target distribution was actually modeled,
+we generate 100000 samples from the trained MPS with adjusted bond dimensions
+and compare them visually to the target marginal distributions.
 
 ![EURUSD Results](/EURUSD_result.png)
 ![GBPUSD Results](/GBPUSD_result.png)

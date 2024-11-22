@@ -18,8 +18,8 @@ pnpm dev
 ```
 
 ```sh
-npm run build
-npm run start
+pnpm build
+pnpm start
 ```
 
 ## License

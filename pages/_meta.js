@@ -1,5 +1,5 @@
 export default{
-  "index": "Welcome",
+  "index": "Introduction",
   // Pages
   "about": {
     "title": "About",
