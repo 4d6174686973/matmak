@@ -2,16 +2,6 @@
 
 In the following project I am applying the Matrix Product State (MPS) training method from the paper Unsupervised Generative Modeling Using Matrix Product States [[1]](#references) to a financial dataset that consists of foreign exchange rates (FX). The code can be found in my [quantum-research](https://github.com/4d6174686973/quantum-research) github repository.
 
-## Matrix Product States
-
-Work in progress ... preparing content for:
-
-- [ ] MPS introduction
-- [ ] Sampling from MPS
-- [ ] Canonical form
-- [ ] NLL Loss and Gradient
-
-
 ## Data Preprocessing
 
 The dataset consists of four FX pairs: EURUSD, GBPUSD, USDCAD, USDJPY. In recent literature about generative modeling in finance, this dataset is a popular choice. [[2]](#references) For each of the four currencies we observe the daily mid price $P_i$. 
@@ -37,7 +27,7 @@ Following histograms represent the marginal distributions of the target distribu
 Since the Matrix Product State model only takes binary values we need to binarize our features.
 For that purpose the algorithm from [[2]](#references) is used.
 
-To transfrom from real to binary we use
+To transform from real to binary we use
 
 $x_{int} = \lfloor (2^N - 1) \frac{x-x_{min}}{x_{max}-x_{min}} \rfloor \leftrightarrow x_{bin}$
 
